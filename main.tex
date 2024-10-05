@@ -1,0 +1,100 @@
+% !TeX program = xelatex
+\PassOptionsToPackage{quiet}{fontspec}
+\documentclass[12pt,a4paper,UTF8]{ctexart}
+\CTEXsetup[format={\Large\bfseries}]{section} %% section 左对齐
+\usepackage{zjureport}
+
+% ++
+\usepackage{float} %解决figure中使用[H]绝对定位的问题
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, calc}
+\usepackage{listings}
+\usepackage{xcolor} % 引入颜色宏包
+\usepackage{tabularx} % 制表
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\lstset{
+    language=Python,  % 设置语言为Python
+    basicstyle=\ttfamily,  % 设置基本字体样式
+    tabsize=4,  % 设置制表符宽度
+    numbers=left,  % 行号显示在左边
+    numberstyle=\tiny\color{gray},  % 行号样式
+    breaklines=true,  % 自动换行
+    frame=single,  % 代码块框架
+    extendedchars=false, % 禁止断页，未解决！
+}
+
+\usepackage{url}
+
+% algorithm类不用引入，直接使用cls的al2e并修改即可
+\usepackage{algorithm2e}
+\newlength{\commentWidth}
+\setlength{\commentWidth}{6cm}  %距离右边的宽度，越大则注释越靠左
+\newcommand{\atcp}[1]{\tcp*[r]{\makebox[\commentWidth]{#1\hfill}}}
+\RestyleAlgo{ruled}
+\SetKwComment{Comment}{/* }{ */}
+\SetKwInput{KwData}{数据}
+\SetKwInput{KwResult}{结果}
+\SetKwInOut{KwIn}{输入}
+\SetKwInOut{KwOut}{输出}
+
+%--------------------信息设置---------------------------%
+\mytitle{论摸鱼中的工程创新前沿}
+\myauthor{摸个鱼先}
+\mystudentid{31415926}
+\mycourse{《摸鱼学导论》课程论文}
+\myschool{摸鱼大学}
+\mygrade{-1}
+\myproject{摸鱼项目}
+\mymajor{摸鱼科学与工程}
+\myteacher{xxx \ 教授}
+
+
+\begin{document}
+\cover
+\thispagestyle{empty} % 首页不显示页码
+
+%%-----目录页----------%%
+% \newpage
+% \tableofcontents
+\newpage
+\setcounter{page}{1}%从下面开始编页码
+
+%--------------------正文---------------------------%
+
+\begin{center}
+   % \title{ \Huge \textbf{{\themytitle}}}
+    \title{\Huge \textcolor[rgb]{0, 0.44, 0.75}{\textbf{\themytitle}}}
+\end{center}
+
+\begin{abstract}
+your abstract here.
+\end{abstract}
+
+
+\include{pages/chapter1}
+
+\section{公式与图片}
+请用xelatex编译，推荐使用overleaf。本模板参考了：\href{https://www.philfan.cn/Tools/latex/#overleaf}{PhilFan's Notebook-Latex备忘录}的相关模板，在此致以感谢！
+
+\subsection{公式}
+具体的，光线的关系如下式\eqref{eq:eq-1}：
+\begin{equation}
+\mathbf{C}(\mathbf{r})=\int_{t_n}^{t_f}T(t)\sigma(\mathbf{r}(t))\mathbf{c}(\mathbf{r}(t),\mathbf{d})dt,\mathrm{~where~}T(t)=\exp\left(-\int_{t_m}^t\sigma(\mathbf{r}(s))ds\right).
+\label{eq:eq-1}
+\end{equation}
+
+\subsection{图片}
+而光线的关系图则如下图\eqref{fig:zju_char}所示：
+\begin{figure}[hb]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/zju_char.png}
+  \caption{zju\_char\cite{mildenhall_nerf_2020}}
+  \label{fig:zju_char}
+\end{figure}
+
+\newpage
+\reference
+\end{document}

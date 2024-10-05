@@ -1,0 +1,35 @@
+% Chapter 1
+
+\section{绪论}
+
+这里概括性用一段话介绍一下本研究的重要性与意义。
+
+\subsection{研究背景与意义}
+NeRF是自2019年兴起的基于神经隐式表示的新型视觉合成方法\cite{mildenhall_nerf_2020}。
+
+\subsection{研究内容}
+
+如下流程图~\ref{fig:paper-structure}所示：
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=10pt]
+      \node[draw, rounded corners]                        (start)   {国内外研究现状研究};
+      \node[draw, below=of start]                         (step 1)  {balabala};
+      \node[draw, below=of step 1]                        (step 2)  {balabala};
+      \node[draw, below=of step 2]                        (step 3)  {balabala};
+      \node[draw, diamond, aspect=2, below=of step 3]     
+      (choice)  {balabala};
+      \node[draw, right=30pt of choice]                   (step x)  {balabala};
+      \node[draw, rounded corners, below=20pt of choice]  (end)     {balabala};
+      
+      \draw[->] (start)  -- (step 1);
+      \draw[->] (step 1) -- (step 2);
+      \draw[->] (step 2) -- (step 3);
+      \draw[->] (step 3) -- (choice);
+      \draw[->] (choice) -- node[left]  {Yes} (end);
+      \draw[->] (choice) -- node[above] {No}  (step x);
+      \draw[->] (step x) -- (step x|-step 3) -> (step 3);
+    \end{tikzpicture}
+    \caption{本文研究工作流程图}\label{fig:paper-structure}
+\end{figure}
